@@ -179,8 +179,6 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 - spesifikasi 
 <img width="229" height="245" alt="Image" src="https://github.com/user-attachments/assets/da7cbf5b-3469-4e85-a90d-7588c1fc7de8" />
 
-<img width="919" height="224" alt="Image" src="https://github.com/user-attachments/assets/e50fcc7f-2a03-494d-8a44-80dd63407c2d" />
-
 ## Cara Penggunaan Singkat    
 
 **1. Memulai Aplikasi (Login & Register)**   
@@ -292,8 +290,11 @@ flutter pub add google_fonts
 
 <img width="959" height="508" alt="Image" src="https://github.com/user-attachments/assets/43cb7b81-a948-48c9-8360-e0e44b7d0c8c" />
 
+## Dataset dari Supabase
+- data email dummy dan data hp
+<img width="910" height="350" alt="Image" src="https://github.com/user-attachments/assets/42d7039d-d3a8-40fe-8fb2-d83264a8aa53" />
 
-
+<img width="914" height="335" alt="Image" src="https://github.com/user-attachments/assets/fc19e11d-8b46-4c8c-bd44-963195c58400" />
 
 
 

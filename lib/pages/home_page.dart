@@ -24,11 +24,9 @@ class _HomePageState extends State<HomePage> {
         .stream(primaryKey: ['id'])
         .order('created_at', ascending: false);
   }
-
   String formatRupiah(String hargaAsli) {
     String angkaSaja = hargaAsli.replaceAll(RegExp(r'[^0-9]'), '');
     if (angkaSaja.isEmpty) return '0';
-
     String hasil = '';
     for (int i = angkaSaja.length - 1; i >= 0; i--) {
       if ((angkaSaja.length - 1 - i) % 3 == 0 && i != angkaSaja.length - 1) {
@@ -38,7 +36,6 @@ class _HomePageState extends State<HomePage> {
     }
     return hasil;
   }
-
   void deleteData(String id) async {
     try {
       await supabase.from('katalog').delete().eq('id', id);
@@ -55,7 +52,6 @@ class _HomePageState extends State<HomePage> {
       }
     }
   }
-  
   void showDetailDialog(BuildContext context, Katalog item) {
     showDialog(
       context: context,
@@ -136,11 +132,9 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
-
           if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
           }
-
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(
               child: Column(
@@ -153,7 +147,6 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }
-
           final data = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -167,7 +160,6 @@ class _HomePageState extends State<HomePage> {
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final item = Katalog.fromJson(data[index]);
-
                 return Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -264,15 +256,13 @@ class _HomePageState extends State<HomePage> {
                             child: Text("256 GB", style: TextStyle(fontSize: 10, color: Colors.grey.shade600)),
                           ),
                         ],
-                      ),
+                      ),                    
                       const Spacer(),
-
                       Text(
                         "Rp${formatRupiah(item.harga.toString())}",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: textColor),
-                      ),
+                      ),                      
                       const SizedBox(height: 16),
-
                       SizedBox(
                         width: double.infinity,
                         height: 40,

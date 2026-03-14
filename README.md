@@ -28,17 +28,15 @@ Kelas: B 2024
 - Hapus Data (Delete): Menghapus produk dari database langsung melalui ikon tempat sampah di masing-masing kartu produk.
 
 **3. UI/UX**    
-- Tema Terang & Gelap (Light/Dark Mode): Terdapat tombol di pojok kanan atas (AppBar) untuk mengubah warna latar dan teks aplikasi sesuai kenyamanan mata pengguna.
+- Desain Monokrom Adaptif: Aplikasi sekarang menggunakan skema warna hitam dan putih yang elegan. Warna latar belakang, tombol, dan teks akan beradaptasi secara otomatis (berkebalikan) saat pengguna mengganti mode Terang ke Gelap.
 
-- Desain Kartu: Menampilkan produk dalam bentuk kotak-kotak (Grid Card) menggunakan widget Wrap, sehingga tampilannya rapi baik saat dibuka di PC maupun di HP.
+- Grid Layout Produk: Daftar HP tidak lagi membingungkan, melainkan tersusun rapi menjadi dua kolom sejajar dengan ukuran tinggi yang sama rata (fixed height) menggunakan sistem Grid.
 
-- Custom Typography: Tampilan tulisan menggunakan jenis font Outfit dari paket Google Fonts.
+- Elemen Visual: Penambahan elemen UI seperti Bintang Rating, Indikator Varian Warna (Hitam, Abu, Biru), dan Badge Pilihan Memori (512GB / 256GB) yang murni bekerja sebagai tampilan (tidak bisa interaksi/dirubah).
 
-- Empty State: Jika database kosong (belum ada produk), aplikasi tidak hanya menampilkan layar putih, melainkan menampilkan ikon HP abu-abu beserta teks pesan "Tambah Dulu".
+- Pop-up Detail Spesifikasi (Dialog): Fitur interaktif baru di mana pengguna bisa menekan tombol melengkung "Lebih detail" untuk memunculkan kotak pop-up yang berisi informasi tahun rilis dan spesifikasi lengkap dari database.
 
-- Indikator Loading: Menampilkan ikon loading memutar (CircularProgressIndicator) saat sistem sedang memproses login, register, atau menyimpan data, agar user tahu aplikasi sedang bekerja.
-
-- Sistem Notifikasi (Snackbar): Memunculkan pop-up notifikasi di bawah layar (Warna Hijau jika sukses, Warna Merah jika gagal/ada kesalahan input).
+- Tombol edit dan hapus: Tombol edit dan hapus sekarang dirubah dari segi warna menjadi abu-abu di pojok kanan atas gambar HP agar tidak terlihat mengganggu estetika cardnya.
 
 **4. Validasi & Format Data**    
 - Currency Formatter: Saat user mengetik angka di kolom Harga, sistem akan otomatis menambahkan titik setiap 3 angka (misal: mengetik 15000 otomatis menjadi 15.000).
@@ -52,66 +50,76 @@ Kelas: B 2024
 - Validasi Form Kosong: Sistem menolak proses simpan jika ada satupun kolom (Nama, Harga, dsb) yang masih kosong.
 
 ## Widget Yang Digunakan   
-**1. Widget Layout & Structure**  
-- Scaffold : Kerangka dasar halaman. Menyediakan tempat untuk AppBar, body, dan FloatingActionButton.
+**1. Widget Struktur & Tata Letak (Layout)**  
+Widget ini berfungsi sebagai kerangka untuk mengatur letak posisi elemen di layar.
 
-- AppBar : Bar navigasi di bagian atas layar (menampilkan judul halaman, tombol tema, dan tombol logout).
+- Scaffold : Kanvas utama untuk setiap halaman. Menyediakan ruang untuk AppBar, body, dan FloatingActionButton.
 
-- Container : Kotak fleksibel yang bisa diberi styling. Dipakai untuk membuat warna gradien pada AppBar dan kotak bingkai gambar.
+- AppBar : Bar navigasi di bagian atas layar (menampilkan judul, tombol tema, dan logout).
 
-- Column : Menyusun widget secara vertikal (dari atas ke bawah). Sangat sering dipakai di form dan isi kartu produk.
+- Container : Kotak serbaguna. Digunakan untuk membuat badge memori (512GB/256GB) dan membungkus kartu HP.
 
-- Row : Menyusun widget secara horizontal (menyamping). Dipakai untuk menata posisi deretan tombol (Edit dan Hapus).
+- Column : Menyusun elemen secara vertikal (dari atas ke bawah). Contoh: Menyusun TextField di halaman Form/Login.
 
-- SizedBox : Digunakan untuk memberikan jarak kosong (spacing) antar elemen, atau memberikan ukuran pasti pada suatu widget.
+- Row : Menyusun elemen secara horizontal (menyamping). Contoh: Menyusun bintang rating, titik warna, dan tombol Edit/Hapus.
 
-- Center : Memosisikan widget tepat di tengah layar (seperti teks "Tambah Dulu" atau ikon loading).
+- Stack : Menumpuk beberapa widget. Digunakan di kartu produk agar tombol Edit/Hapus bisa melayang di atas gambar HP.
 
-- Padding : Memberikan ruang atau bantalan di bagian dalam widget agar konten tidak menempel ke tepi layar atau tepi kartu.
+- Positioned : Teman dari Stack, digunakan untuk mengatur posisi spesifik (misal: ditaruh tepat di pojok kanan atas).
 
-- SingleChildScrollView : Membuat area layar bisa di-scroll ke bawah (mencegah error overflow jika form sangat panjang atau layar HP kecil).
+- Padding : Memberikan jarak/bantalan di bagian dalam konten agar tidak menempel ke pinggir layar.
 
-- Wrap : Widget pintar yang Anda gunakan di HomePage untuk menyusun Card ke samping, dan otomatis menurunkannya ke baris baru jika lebar layar sudah tidak muat (membuat aplikasi jadi responsif).
+- SizedBox : Memberikan jarak kosong antar elemen (sebagai spasi), atau untuk "memaksa" ukuran gambar/kotak agar spesifik.
 
-**2. Widget Visual Component**  
+- Spacer : Widget elastis yang mendorong elemen lain. Digunakan di dalam kartu produk agar Harga dan Tombol "Lebih detail" selalu terdorong ke bagian paling bawah, tidak peduli seberapa panjang nama HP-nya.
+
+- SingleChildScrollView : Membuat area layar bisa di-scroll (digulir) ke bawah. Sangat penting di halaman Login, Register, dan Form agar tidak error overflow saat keyboard HP muncul.
+
+- GridView.builder : Widget canggih pembuat grid (kotak-kotak). Mengatur daftar HP agar tampil rapi menjadi 2 kolom dengan tinggi yang seragam.
+
+**2. Widget Visual & Tampilan (UI Components)**  
+Widget ini adalah elemen yang langsung dilihat oleh mata pengguna.
+
 - Text : Untuk menampilkan semua tulisan (Judul, Harga, Spesifikasi, dll).
 
-- Icon : Untuk menampilkan ikon-ikon bawaan Material Design (ikon gembok, email, hapus, edit, logout, matahari/bulan).
+- Icon : Untuk menampilkan grafis ikon bawaan (gembok, email, bintang rating, sun/moon, dll).
 
+- Image.network : Mengambil dan menampilkan gambar HP langsung dari URL internet/Supabase.
 
+- CircleAvatar : Membuat bentuk lingkaran sempurna. Digunakan untuk membuat bulatan-bulatan kecil varian warna HP (Hitam, Abu, Biru).
 
- - Image.network : Menampilkan gambar smartphone yang bersumber dari URL internet/Supabase.
+**3. Widget Tombol & Input (Inputs & Actions)**  
+Widget ini berfungsi untuk interaksi user (diketik atau diklik).
 
- - Image.memory : Menampilkan preview gambar sementara yang baru saja dipilih dari galeri HP/PC sebelum di-upload.
+- TextField : Kolom tempat pengguna mengetik teks (Email, Password, Nama HP, Harga, dsb).
 
-- Card : Membuat kotak dengan efek bayangan (elegan) untuk membungkus data setiap produk di halaman beranda.
+- ElevatedButton : Tombol utama dengan blok warna solid (Tombol Login, Buat Akun, Simpan). Warnanya kini otomatis hitam/putih menyesuaikan tema.
 
-- ClipRRect : Memotong ujung gambar agar menjadi tumpul/melengkung (rounded corners) agar terlihat modern dan serasi dengan bingkai Card.
+- OutlinedButton : Tombol sekunder dengan garis tepi (Tombol "Lebih detail" di Beranda dan "Belum punya akun" di Login).
 
-**3. Widget Input & Button**  
-- TextField : Kolom tempat pengguna mengetik teks atau angka (Input Email, Password, Nama HP, Harga, Tahun, Spesifikasi).
+- IconButton : Tombol yang murni berupa ikon tanpa kotak/teks (Tombol Tema, Logout, Edit, dan Hapus).
 
-- ElevatedButton : Tombol utama dengan efek timbul dan warna solid (Tombol "Login", "Buat Akun", "Simpan", "Update").
+- TextButton : Tombol berupa teks sederhana tanpa batas (border). Digunakan untuk tombol "Tutup" pada pop-up spesifikasi.
 
-- OutlinedButton : Tombol sekunder dengan garis pinggir namun tanpa warna latar belakang (Tombol "Belum punya akun? Register").
+- FloatingActionButton : Tombol utama berbentuk bulat yang selalu melayang di sudut kanan bawah Beranda (Tombol Tambah +).
 
-- IconButton : Tombol yang hanya berupa ikon tanpa kotak/teks (Tombol Edit, Hapus, Logout, dan Tema).
+**4. Widget Dialog & Notifikasi**  
+- AlertDialog : Muncul lewat fungsi showDialog(). Ini adalah kotak pop-up melayang di tengah layar yang muncul saat Anda mengklik tombol "Lebih detail" untuk membaca spesifikasi.  
+    
+5. Widget Logika & State Management (Di Balik Layar)
+Widget ini mengurus aliran data dan perubahan status layar.
 
-- FloatingActionButton (FAB) : Tombol utama yang melayang di sudut kanan bawah layar (Tombol "Tambah" di halaman Beranda).
+- MaterialApp : Bos besar (root widget) di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
 
-- GestureDetector : Widget tak terlihat yang berfungsi mendeteksi sentuhan/ketukan. Digunakan pada area gambar di form agar saat diklik bisa membuka galeri.
+- StreamBuilder : Widget super yang mendengarkan database Supabase. Kalau ada data ditambah/dihapus, ia akan otomatis me-refresh daftar HP tanpa perlu kita muat ulang secara manual.
 
-**4. Widget State Management & Utilitas Tersembunyi**  
-- MaterialApp : Widget akar (root) yang membungkus seluruh aplikasi, mengatur tema global (font, warna gelap/terang), dan rute.
+- ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu memuat ulang halaman.
 
-- StreamBuilder : Widget super yang mendengarkan aliran data (stream) dari Supabase. Ia bertugas me-refresh UI secara otomatis setiap kali ada perubahan data di database.
-
-- ValueListenableBuilder : Mendengarkan perubahan variabel tema (Terang/Gelap) dan langsung mengubah tampilan aplikasi tanpa perlu reload manual.
-
-- CircularProgressIndicator : Animasi lingkaran berputar yang menandakan aplikasi sedang memproses sesuatu (Loading saat login, register, atau menyimpan data).  
+- CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang berpikir (loading login, register, atau menyimpan data ke server). 
 
 ## Setup Supabase  
-Agar kode main.dart Anda bisa terhubung dengan database yang baru saja dibuat, harus memasukkan kuncinya:
+1. Menghubunhkan ke supabase
+Agar kode main.dart Abisa terhubung dengan database yang baru saja dibuat, kita harus memasukkan kuncinya:
 
 Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
 Di sana Anda akan melihat Publishable key dan copy(ini akan digunakan sebagai anon key).
@@ -123,6 +131,8 @@ Dart
     url: 'COPY_URL_PROJECT_ANDA_DI_SINI',   
     anonKey: 'COPY_ANON_KEY_ANDA_DI_SINI',  
   );  
+
+2. Membuat database 
 
 ## Cara Penggunaan Singkat  
 

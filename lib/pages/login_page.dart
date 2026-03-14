@@ -124,8 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 30),
-            
+            const SizedBox(height: 30),          
             if (isLoading) 
               const Center(child: CircularProgressIndicator())
             else ...[

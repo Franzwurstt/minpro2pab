@@ -84,20 +84,20 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final bgColor = isDarkMode ? const Color(0xFF121212) : const Color(0xFFF7F7F7);
+    final buttonColor = isDarkMode ? Colors.white : Colors.black;
+    final buttonTextColor = isDarkMode ? Colors.black : Colors.white;
+
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
-        title: const Text('Register', style: TextStyle(color: Colors.white)),
+        title: Text('Register', style: TextStyle(color: textColor, fontWeight: FontWeight.bold)),
         centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.white),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF1428A0), Colors.blue],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
+        backgroundColor: bgColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: textColor),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 20),
-            const Icon(Icons.person_add_alt_1_outlined, size: 80, color: Color(0xFF1428A0)),
+            Icon(Icons.person_add_alt_1_outlined, size: 80, color: textColor),
             const SizedBox(height: 30),
             TextField(
               controller: emailController,
@@ -146,10 +146,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: registerAction,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  backgroundColor: const Color(0xFF1428A0),
-                  foregroundColor: Colors.white,
+                  backgroundColor: buttonColor,
+                  foregroundColor: buttonTextColor,
                 ),
-                child: const Text('Buat Akun', style: TextStyle(fontSize: 16)),
+                child: const Text('Buat Akun', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
           ],
         ),

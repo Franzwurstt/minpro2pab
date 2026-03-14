@@ -119,11 +119,11 @@ Widget ini mengurus aliran data dan perubahan status layar.
 
 ## Setup Supabase  
 
-1. Membuat Project Baru di Supabase
+**1. Membuat Project Baru di Supabase**    
 Disini saya membuat New Project, lalu pilih Organization.
 Lalu saya memberi nama project,membuat Database Password, dan memiilih Region server.
 
-2. Menghubungkan ke supabase  
+**2. Menghubungkan ke supabase**    
 Agar kode main.dart bisa terhubung dengan database yang baru saja dibuat, kita harus memasukkan kuncinya:
 
 Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
@@ -137,16 +137,16 @@ Dart
     anonKey: 'COPY_ANON_KEY_ANDA_DI_SINI',  
   );  
 
-3. Mengaktifkan Fitur Autentikasi (Login & Register)
+**3. Mengaktifkan Fitur Autentikasi (Login & Register)**
 Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email Auth dengan cara:  
 
-Ke menu kiri Supabase, masuk ke menu Authentication > Providers.
+- Ke menu kiri Supabase, masuk ke menu Authentication > Providers.
 
-Klik Email, pastikan toggle Enable Email provider menyala.
+- Klik Email untuk Enable Email provider.
 
-lalu saya mematikan toggle Confirm email agar tidak perlu repot memverifikasi email asli setiap kali membuat akun dummy di halaman Register.  
+- lalu saya mematikan toggle Confirm email agar tidak perlu repot memverifikasi email asli setiap kali membuat akun dummy di halaman Register.  
 
-## Cara Penggunaan Singkat  
+## Cara Penggunaan Singkat    
 
 **1. Memulai Aplikasi (Login & Register)**   
 - Membuat Akun: Saat pertama kali membuka aplikasi, Anda akan berada di halaman Login. Jika belum memiliki akun, klik tombol "Belum punya akun? Register". Masukkan email dan password Anda, lalu klik Buat Akun.

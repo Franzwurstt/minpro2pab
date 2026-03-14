@@ -47,7 +47,7 @@ samsung/
 
 - Grid Layout Produk: Daftar HP tidak lagi membingungkan, melainkan tersusun rapi menjadi dua kolom sejajar dengan ukuran tinggi yang sama rata (fixed height) menggunakan sistem Grid.
 
-- Elemen Visual: Penambahan elemen UI seperti Bintang Rating, Indikator Varian Warna (Hitam, Abu, Biru), dan Badge Pilihan Memori (512GB / 256GB) yang murni bekerja sebagai tampilan (tidak bisa interaksi/dirubah).
+- Dilengkapi dengan ornamen visual seperti Bintang Rating dan Indikator Varian Warna yang ada. Terdapat juga Tombol Varian Memori (256 GB, 512 GB, 1 TB) yang interaktif. Saat pengguna memilih kapasitas memori yang lebih besar, harga produk yang tertera di bagian bawah kartu akan otomatis berubah.
 
 - Pop-up Detail Spesifikasi (Dialog): Fitur interaktif baru di mana pengguna bisa menekan tombol melengkung "Lebih detail" untuk memunculkan kotak pop-up yang berisi informasi tahun rilis dan spesifikasi lengkap dari database.
 
@@ -175,9 +175,9 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 - tahun 
 - gambar
 - spesifikasi 
-<img width="386" height="278" alt="Image" src="https://github.com/user-attachments/assets/e1253e4e-cd04-4b1f-9959-2fcbce74b99f" />
+<img width="229" height="245" alt="Image" src="https://github.com/user-attachments/assets/da7cbf5b-3469-4e85-a90d-7588c1fc7de8" />
 
-<img width="958" height="349" alt="Image" src="https://github.com/user-attachments/assets/f28f74c7-c7f8-4059-85d9-c83977341826" />  
+<img width="919" height="224" alt="Image" src="https://github.com/user-attachments/assets/e50fcc7f-2a03-494d-8a44-80dd63407c2d" />
 
 ## Cara Penggunaan Singkat    
 
@@ -261,21 +261,23 @@ flutter pub add google_fonts
 - tampilan form page (buat isi data smartphone)
 <img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/880c612f-5d2b-411e-84e9-cb6de01fa0bb" />
 
-- tampilan home page setelah diisi data
-<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/de3ada6a-3a71-4e19-b1ea-0b59dd3eb7de" />
+- tampilan home page setelah diisi data (bisa memilih storage handphone)
+<img width="957" height="509" alt="Image" src="https://github.com/user-attachments/assets/9b8e92ce-a367-41df-9a62-64cc5eeec25f" />
+
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/e25be059-bdbb-4abb-9a3f-fd866b9f2ff1" />
 
 - tampilan detail spesifikasi
-<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/b9863d27-1645-4dbc-90e1-cc276e48ec58" />
+<img width="960" height="508" alt="Image" src="https://github.com/user-attachments/assets/7d4effb5-ae2f-4c2f-8b1a-9bb82d848a38" />/>
 
 - tampilan edit page
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/a1cb7b54-ef7c-4c4f-9607-fe2a7faaf71e" />
 
-- tampilan setelah delete (kepencet dark mode)
-<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/7092389e-100c-4381-9847-b5beb1e97e81" />
+- tampilan setelah delete 
+<img width="959" height="508" alt="Image" src="https://github.com/user-attachments/assets/18ea202a-25d0-4714-b637-e717de39b655" />
 
 **2. Dark Mode**
 - mode gelap (untuk mengaktifkan darkmode klik logo bulan)
-<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/38200918-d552-48d6-a072-9556d0207ea0" />
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/7a781c68-ee58-43c2-b34c-8e6021ed0a52" />
 <img width="960" height="446" alt="Image" src="https://github.com/user-attachments/assets/a68c215f-354e-4ea5-96b9-8d918730a66d" />
 
 - tampilan darkmode lainnya
@@ -284,7 +286,7 @@ flutter pub add google_fonts
 
 <img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/d2ecacdc-4f38-48cf-a153-a945e09c13cc" />
 
-<img width="955" height="508" alt="Image" src="https://github.com/user-attachments/assets/a0ead9d2-c6d5-44e1-abc2-2535de31e5aa" />
+<img width="960" height="508" alt="Image" src="https://github.com/user-attachments/assets/fd231e40-94ba-439e-8a77-15245c543230" />
 
 <img width="959" height="508" alt="Image" src="https://github.com/user-attachments/assets/43cb7b81-a948-48c9-8360-e0e44b7d0c8c" />
 

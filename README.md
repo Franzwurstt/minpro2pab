@@ -247,13 +247,13 @@ flutter pub add google_fonts
 ## Screenshot Aplikasi
 **1. Light Mode**
 - tampilan page login (kalau belum buat akun register terlebih dahulu)
-<img width="960" height="511" alt="Image" src="https://github.com/user-attachments/assets/7c0f2446-c1a6-4046-946f-79464d93419c" />
+<img width="960" height="511" alt="Image" src="https://github.com/user-attachments/assets/535fc600-13d4-4a08-916f-e0f56b9f89eb" />
 
 - tampilan page register
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/1e1ef656-9fac-45be-b02c-ca11aed05887" />
 
 - balik ke page login kalau sudah registrasi akun
-<img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/6426ae07-5e76-4c50-9977-f250c1ef38ca" />
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/5d187c82-f988-4e7c-843e-50794fccaa8c" />
 
 - tampilan home page (belum ada katalognya)
 <img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/effbcbd3-98f3-40bd-a039-38fbafe5f2ef" />
@@ -274,12 +274,11 @@ flutter pub add google_fonts
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/7092389e-100c-4381-9847-b5beb1e97e81" />
 
 **2. Dark Mode**
-- mode gelap (untuk mengaktifkan darkmode klik logo matahari di home page)
+- mode gelap (untuk mengaktifkan darkmode klik logo bulan)
 <img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/38200918-d552-48d6-a072-9556d0207ea0" />
+<img width="960" height="446" alt="Image" src="https://github.com/user-attachments/assets/a68c215f-354e-4ea5-96b9-8d918730a66d" />
 
 - tampilan darkmode lainnya
-
-<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/d0219901-73ec-4d7a-8745-47d12690effa" />
 
 <img width="958" height="508" alt="Image" src="https://github.com/user-attachments/assets/f409599b-8907-4d07-8e6d-256056e75f31" />
 

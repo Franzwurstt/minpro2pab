@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Icon(Icons.inventory_2_outlined, size: 70, color: Colors.grey),
                   SizedBox(height: 10),
-                  Text("Belum ada produk.", style: TextStyle(fontSize: 18, color: Colors.grey)),
+                  Text("Tambah Dulu", style: TextStyle(fontSize: 18, color: Colors.grey)),
                 ],
               ),
             );

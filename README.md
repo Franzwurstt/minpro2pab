@@ -6,6 +6,21 @@ Kelas: B 2024
 ## Deskripsi Project  
 Aplikasi Katalog Smartphone Samsung adalah sebuah platform digital berbasis mobile yang dirancang untuk mengelola dan mendokumentasikan informasi lini smartphone Samsung secara sistematis. Dibangun dengan antarmuka pengguna (UI) bergaya monokrom yang adaptif terhadap Dark/Light Mode, aplikasi ini memiliki navigasi layaknya etalase digital. Pengguna yang terautentikasi dapat dengan mudah melakukan manajemen data secara real-time mulai dari menambahkan informasi handphone samsung, melihat spesifikasi detail dan harga, memperbarui informasi, hingga menghapus data katalog yang sudah tidak relevan.
 
+## Struktur Folder  
+samsung/  
+│  
+├── lib/  
+│   ├── models/  
+│   │   └── katalog.dart           
+│   │  
+│   ├── pages/                      
+│   │   ├── form_page.dart         
+│   │   ├── home_page.dart         
+│   │   ├── login_page.dart        
+│   │   └── register_page.dart    
+│   │  
+│   └── main.dart  
+
 ## Fitur Aplikasi
 **1. Fitur Autentikasi (Keamanan Pengguna)**    
 - Registrasi Akun (Sign Up): Pengguna baru dapat membuat akun menggunakan kombinasi email dan password.
@@ -57,7 +72,7 @@ Widget ini berfungsi sebagai kerangka untuk mengatur letak posisi elemen di laya
 
 - AppBar : Bar navigasi di bagian atas layar (menampilkan judul, tombol tema, dan logout).
 
-- Container : Kotak serbaguna. Digunakan untuk membuat badge memori (512GB/256GB) dan membungkus kartu HP.
+- Container : Digunakan untuk membuat badge memori (512GB/256GB) dan membungkus kartu HP.
 
 - Column : Menyusun elemen secara vertikal (dari atas ke bawah). Contoh: Menyusun TextField di halaman Form/Login.
 
@@ -65,17 +80,17 @@ Widget ini berfungsi sebagai kerangka untuk mengatur letak posisi elemen di laya
 
 - Stack : Menumpuk beberapa widget. Digunakan di kartu produk agar tombol Edit/Hapus bisa melayang di atas gambar HP.
 
-- Positioned : Teman dari Stack, digunakan untuk mengatur posisi spesifik (misal: ditaruh tepat di pojok kanan atas).
+- Positioned : Digunakan untuk mengatur posisi spesifik (misal: ditaruh tepat di pojok kanan atas).
 
-- Padding : Memberikan jarak/bantalan di bagian dalam konten agar tidak menempel ke pinggir layar.
+- Padding : Memberikan jarak di bagian dalam konten agar tidak menempel ke pinggir layar.
 
 - SizedBox : Memberikan jarak kosong antar elemen (sebagai spasi), atau untuk "memaksa" ukuran gambar/kotak agar spesifik.
 
 - Spacer : Widget elastis yang mendorong elemen lain. Digunakan di dalam kartu produk agar Harga dan Tombol "Lebih detail" selalu terdorong ke bagian paling bawah, tidak peduli seberapa panjang nama HP-nya.
 
-- SingleChildScrollView : Membuat area layar bisa di-scroll (digulir) ke bawah. Sangat penting di halaman Login, Register, dan Form agar tidak error overflow saat keyboard HP muncul.
+- SingleChildScrollView : Membuat area layar bisa di-scroll ke bawah.
 
-- GridView.builder : Widget canggih pembuat grid (kotak-kotak). Mengatur daftar HP agar tampil rapi menjadi 2 kolom dengan tinggi yang seragam.
+- GridView.builder : Widge pembuat grid. Mengatur daftar HP agar terlihat rapi menjadi kolom dengan tinggi yang seragam.
 
 **2. Widget Visual & Tampilan (UI Components)**  
 Widget ini adalah elemen yang langsung dilihat oleh mata pengguna.
@@ -93,7 +108,7 @@ Widget ini berfungsi untuk interaksi user (diketik atau diklik).
 
 - TextField : Kolom tempat pengguna mengetik teks (Email, Password, Nama HP, Harga, dsb).
 
-- ElevatedButton : Tombol utama dengan blok warna solid (Tombol Login, Buat Akun, Simpan). Warnanya kini otomatis hitam/putih menyesuaikan tema.
+- ElevatedButton : Tombol utama (Tombol Login, Buat Akun, Simpan). 
 
 - OutlinedButton : Tombol sekunder dengan garis tepi (Tombol "Lebih detail" di Beranda dan "Belum punya akun" di Login).
 
@@ -106,16 +121,16 @@ Widget ini berfungsi untuk interaksi user (diketik atau diklik).
 **4. Widget Dialog & Notifikasi**  
 - AlertDialog : Muncul lewat fungsi showDialog(). Ini adalah kotak pop-up melayang di tengah layar yang muncul saat Anda mengklik tombol "Lebih detail" untuk membaca spesifikasi.  
     
-**5. Widget Logika & State Management (Di Balik Layar)**  
+**5. Widget Logika & State Management**  
 Widget ini mengurus aliran data dan perubahan status layar.
 
-- MaterialApp : Bos besar (root widget) di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
+- MaterialApp :root widget di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
 
-- StreamBuilder : Widget super yang mendengarkan database Supabase. Kalau ada data ditambah/dihapus, ia akan otomatis me-refresh daftar HP tanpa perlu kita muat ulang secara manual.
+- StreamBuilder : Widgetyang mendengarkan database Supabase. Kalau ada data ditambah/dihapus, makan akan otomatis me-refresh daftar HP tanpa perlu refresh secara manual.
 
-- ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu memuat ulang halaman.
+- ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu refresh halaman.
 
-- CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang berpikir (loading login, register, atau menyimpan data ke server). 
+- CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang loading (loading login, register, atau menyimpan data ke server). 
 
 ## Setup Supabase  
 
@@ -125,10 +140,10 @@ Widget ini mengurus aliran data dan perubahan status layar.
 
 **2. Menghubungkan ke Supabase**    
 - Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
-- Di sana Anda akan melihat Publishable key dan copy(ini akan digunakan sebagai anon key).
-= Lalu buka Data API. Copy url yang ada di API URL
+- Di sana akan terlihat Publishable key dan copy(ini akan digunakan sebagai anon key).
+- Lalu buka Data API. Copy url yang ada di API URL
 
-- Buka file main.dart di laptop Anda, lalu copy-paste kedua kode tersebut ke bagian ini:
+- Buka file main.dart, lalu copy-paste kedua kode tersebut ke bagian ini:
   
 Dart  
   await Supabase.initialize(  
@@ -153,13 +168,13 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 
 - Lalu saya menambahkan tabel beserta kolomnya yaitu:
 
-- id (Tipe: uuid, Default Value: gen_random_uuid(), centang Primary) - Biasanya sudah ada otomatis.
-- created_at (Tipe: timestamptz, Default Value: now()) - Biasanya sudah ada otomatis.
-- nama (Tipe: text)
-- harga (Tipe: int8 atau numeric)
-- tahun (Tipe: int4 atau numeric)
-- gambar (Tipe: text)
-- spesifikasi (Tipe: text)  
+- id - Biasanya sudah ada otomatis.
+- created_at - Biasanya sudah ada otomatis.
+- nama 
+- harga 
+- tahun 
+- gambar
+- spesifikasi 
 <img width="386" height="278" alt="Image" src="https://github.com/user-attachments/assets/e1253e4e-cd04-4b1f-9959-2fcbce74b99f" />
 
 <img width="958" height="349" alt="Image" src="https://github.com/user-attachments/assets/f28f74c7-c7f8-4059-85d9-c83977341826" />  
@@ -213,22 +228,70 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 **6. Keluar dari Aplikasi (Logout)**  
 Jika Anda sudah selesai bertugas atau ingin berganti akun admin lain, klik ikon Pintu Keluar/Logout yang terletak di pojok kanan atas layar sebelah tombol Tema. Anda akan dikembalikan ke halaman Login.
 
-## Struktur Folder  
-samsung/  
-│  
-├── lib/  
-│   ├── models/  
-│   │   └── katalog.dart           
-│   │  
-│   ├── pages/                      
-│   │   ├── form_page.dart         
-│   │   ├── home_page.dart         
-│   │   ├── login_page.dart        
-│   │   └── register_page.dart    
-│   │  
-│   └── main.dart                  
+## Cara Menjalankan Project  
+- Clone repository:  
+git clone https://github.com/Franzwurstt/minpro2pab.git  
+cd minpro2pab  
+
+
+- Install dependencies:
+flutter pub get
+
+
+- Jalankan aplikasi:
+flutter run
+
+- Untuk mengakses Google Fonts    
+flutter pub add google_fonts  
 
 ## Screenshot Aplikasi
+**1. Light Mode**
+- tampilan page login (kalau belum buat akun register terlebih dahulu)
+<img width="960" height="511" alt="Image" src="https://github.com/user-attachments/assets/7c0f2446-c1a6-4046-946f-79464d93419c" />
+
+- tampilan page register
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/1e1ef656-9fac-45be-b02c-ca11aed05887" />
+
+- balik ke page login kalau sudah registrasi akun
+<img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/6426ae07-5e76-4c50-9977-f250c1ef38ca" />
+
+- tampilan home page (belum ada katalognya)
+<img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/effbcbd3-98f3-40bd-a039-38fbafe5f2ef" />
+
+- tampilan form page (buat isi data smartphone)
+<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/880c612f-5d2b-411e-84e9-cb6de01fa0bb" />
+
+- tampilan home page setelah diisi data
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/de3ada6a-3a71-4e19-b1ea-0b59dd3eb7de" />
+
+- tampilan detail spesifikasi
+<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/b9863d27-1645-4dbc-90e1-cc276e48ec58" />
+
+- tampilan edit page
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/a1cb7b54-ef7c-4c4f-9607-fe2a7faaf71e" />
+
+- tampilan setelah delete (kepencet dark mode)
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/7092389e-100c-4381-9847-b5beb1e97e81" />
+
+**2. Dark Mode**
+- mode gelap (untuk mengaktifkan darkmode klik logo matahari di home page)
+<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/38200918-d552-48d6-a072-9556d0207ea0" />
+
+- tampilan darkmode lainnya
+
+<img width="960" height="506" alt="Image" src="https://github.com/user-attachments/assets/d0219901-73ec-4d7a-8745-47d12690effa" />
+
+<img width="958" height="508" alt="Image" src="https://github.com/user-attachments/assets/f409599b-8907-4d07-8e6d-256056e75f31" />
+
+<img width="959" height="509" alt="Image" src="https://github.com/user-attachments/assets/d2ecacdc-4f38-48cf-a153-a945e09c13cc" />
+
+<img width="955" height="508" alt="Image" src="https://github.com/user-attachments/assets/a0ead9d2-c6d5-44e1-abc2-2535de31e5aa" />
+
+<img width="959" height="508" alt="Image" src="https://github.com/user-attachments/assets/43cb7b81-a948-48c9-8360-e0e44b7d0c8c" />
+
+
+
+
 
 
 

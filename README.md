@@ -118,8 +118,13 @@ Widget ini mengurus aliran data dan perubahan status layar.
 - CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang berpikir (loading login, register, atau menyimpan data ke server). 
 
 ## Setup Supabase  
-1. Menghubunhkan ke supabase
-Agar kode main.dart Abisa terhubung dengan database yang baru saja dibuat, kita harus memasukkan kuncinya:
+
+1. Membuat Project Baru di Supabase
+Disini saya membuat New Project, lalu pilih Organization.
+Lalu saya memberi nama project,membuat Database Password, dan memiilih Region server.
+
+2. Menghubungkan ke supabase  
+Agar kode main.dart bisa terhubung dengan database yang baru saja dibuat, kita harus memasukkan kuncinya:
 
 Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
 Di sana Anda akan melihat Publishable key dan copy(ini akan digunakan sebagai anon key).
@@ -132,7 +137,14 @@ Dart
     anonKey: 'COPY_ANON_KEY_ANDA_DI_SINI',  
   );  
 
-2. Membuat database 
+3. Mengaktifkan Fitur Autentikasi (Login & Register)
+Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email Auth dengan cara:  
+
+Ke menu kiri Supabase, masuk ke menu Authentication > Providers.
+
+Klik Email, pastikan toggle Enable Email provider menyala.
+
+lalu saya mematikan toggle Confirm email agar tidak perlu repot memverifikasi email asli setiap kali membuat akun dummy di halaman Register.  
 
 ## Cara Penggunaan Singkat  
 

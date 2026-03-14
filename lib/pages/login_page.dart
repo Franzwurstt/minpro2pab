@@ -81,19 +81,20 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final bgColor = isDarkMode ? const Color(0xFF121212) : const Color(0xFFF7F7F7);
+    final buttonColor = isDarkMode ? Colors.white : Colors.black;
+    final buttonTextColor = isDarkMode ? Colors.black : Colors.white;
+
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
-        title: const Text('Login', style: TextStyle(color: Colors.white)),
+        title: Text('Login', style: TextStyle(color: textColor, fontWeight: FontWeight.bold)),
         centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF1428A0), Colors.blue],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
+        backgroundColor: bgColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: textColor),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 50),
-            const Icon(Icons.lock_outline, size: 80, color: Color(0xFF1428A0)),
+            Icon(Icons.lock_outline, size: 80, color: textColor),
             const SizedBox(height: 30),
             TextField(
               controller: emailController,
@@ -132,10 +133,10 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: loginAction,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  backgroundColor: const Color(0xFF1428A0),
-                  foregroundColor: Colors.white,
+                  backgroundColor: buttonColor,
+                  foregroundColor: buttonTextColor,
                 ),
-                child: const Text('Login', style: TextStyle(fontSize: 16)),
+                child: const Text('Login', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 10),
               OutlinedButton(
@@ -147,9 +148,9 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  side: const BorderSide(color: Color(0xFF1428A0)),
+                  side: BorderSide(color: textColor),
                 ),
-                child: const Text('Belum punya akun? Register', style: TextStyle(color: Color(0xFF1428A0))),
+                child: Text('Belum punya akun? Register', style: TextStyle(color: textColor, fontWeight: FontWeight.bold)),
               ),
             ]
           ],

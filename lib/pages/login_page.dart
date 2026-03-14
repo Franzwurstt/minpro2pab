@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../main.dart';
 import 'home_page.dart';
 import 'register_page.dart'; 
 
@@ -95,6 +96,14 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: bgColor,
         elevation: 0,
         iconTheme: IconThemeData(color: textColor),
+        actions: [
+          IconButton(
+            icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode, color: textColor),
+            onPressed: () {
+              themeNotifier.value = isDarkMode ? ThemeMode.light : ThemeMode.dark;
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
@@ -108,20 +117,36 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
+              style: TextStyle(color: textColor), 
+              decoration: InputDecoration(
                 labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
-                border: OutlineInputBorder(),
+                labelStyle: TextStyle(color: textColor.withOpacity(0.7)),
+                prefixIcon: Icon(Icons.email, color: textColor),
+                border: const OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor.withOpacity(0.5)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor, width: 2),
+                ),
               ),
             ),
             const SizedBox(height: 15),
             TextField(
               controller: passwordController,
               obscureText: true,
-              decoration: const InputDecoration(
+              style: TextStyle(color: textColor), 
+              decoration: InputDecoration(
                 labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-                border: OutlineInputBorder(),
+                labelStyle: TextStyle(color: textColor.withOpacity(0.7)),
+                prefixIcon: Icon(Icons.lock, color: textColor),
+                border: const OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor.withOpacity(0.5)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor, width: 2),
+                ),
               ),
             ),
             const SizedBox(height: 30),          

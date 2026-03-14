@@ -148,10 +148,23 @@ class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     final isEdit = widget.katalog != null;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final bgColor = isDarkMode ? const Color(0xFF121212) : const Color(0xFFF7F7F7);
+    final buttonColor = isDarkMode ? Colors.white : Colors.black;
+    final buttonTextColor = isDarkMode ? Colors.black : Colors.white;
 
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text(isEdit ? "Edit Katalog" : "Tambah Katalog"),
+        title: Text(
+          isEdit ? "Edit Katalog" : "Tambah Katalog", 
+          style: TextStyle(color: textColor, fontWeight: FontWeight.bold)
+        ),
+        centerTitle: true,
+        backgroundColor: bgColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: textColor),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -211,7 +224,7 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30), 
 
             isLoading
                 ? const CircularProgressIndicator()
@@ -219,12 +232,15 @@ class _FormPageState extends State<FormPage> {
                     onPressed: saveData,
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 50),
-                      backgroundColor: const Color(0xFF1428A0),
-                      foregroundColor: Colors.white,
+                      backgroundColor: buttonColor,
+                      foregroundColor: buttonTextColor, 
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8), 
+                      ),
                     ),
                     child: Text(
                       isEdit ? "Update" : "Simpan",
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
           ],

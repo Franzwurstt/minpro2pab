@@ -177,8 +177,8 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             const SizedBox(height: 15),
-
             TextField(
               controller: hargaController,
               keyboardType: TextInputType.number,
@@ -192,8 +192,8 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             const SizedBox(height: 15),
-
             TextField(
               controller: tahunController,
               keyboardType: TextInputType.number,
@@ -205,8 +205,8 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             const SizedBox(height: 15),
-
             TextField(
               controller: gambarController,
               decoration: const InputDecoration(
@@ -214,8 +214,8 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             const SizedBox(height: 15),
-
             TextField(
               controller: spesifikasiController,
               maxLines: 3,
@@ -224,8 +224,8 @@ class _FormPageState extends State<FormPage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             const SizedBox(height: 30), 
-
             isLoading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(

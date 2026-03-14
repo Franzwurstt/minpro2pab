@@ -130,7 +130,7 @@ Widget ini mengurus aliran data dan perubahan status layar.
 
 - ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu refresh halaman.
   
-- StatefulBuilder & GestureDetector: (Khusus untuk logika memori) Diaplikasikan di dalam kartu produk untuk menangkap sentuhan interaktif (HitTestBehavior.opaque) pada kotak varian memori (256GB/512GB/1TB). Widget ini memungkinkan setiap kartu memperbarui status yang dipilih dan menghitung ulang harga secara real-time.
+- StatefulBuilder & GestureDetector: Diaplikasikan di dalam kartu produk untuk menangkap sentuhan interaktif (HitTestBehavior.opaque) pada kotak varian memori (256GB/512GB/1TB). Widget ini memungkinkan setiap kartu memperbarui status yang dipilih dan menghitung ulang harga secara real-time.
   
 - CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang loading (loading login, register, atau menyimpan data ke server). 
 

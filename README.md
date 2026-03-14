@@ -215,7 +215,6 @@ samsung/
 
 ## Screenshot Aplikasi
 
-![Tampilan]()
 
 
 

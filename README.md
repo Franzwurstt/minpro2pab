@@ -106,7 +106,7 @@ Widget ini berfungsi untuk interaksi user (diketik atau diklik).
 **4. Widget Dialog & Notifikasi**  
 - AlertDialog : Muncul lewat fungsi showDialog(). Ini adalah kotak pop-up melayang di tengah layar yang muncul saat Anda mengklik tombol "Lebih detail" untuk membaca spesifikasi.  
     
-5. Widget Logika & State Management (Di Balik Layar)
+**5. Widget Logika & State Management (Di Balik Layar)**  
 Widget ini mengurus aliran data dan perubahan status layar.
 
 - MaterialApp : Bos besar (root widget) di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
@@ -120,17 +120,16 @@ Widget ini mengurus aliran data dan perubahan status layar.
 ## Setup Supabase  
 
 **1. Membuat Project Baru di Supabase**    
-Disini saya membuat New Project, lalu pilih Organization.
-Lalu saya memberi nama project,membuat Database Password, dan memiilih Region server.
+- Disini saya membuat New Project, lalu pilih Organization.
+- Lalu saya memberi nama project,membuat Database Password, dan memiilih Region server.
 
-**2. Menghubungkan ke supabase**    
-Agar kode main.dart bisa terhubung dengan database yang baru saja dibuat, kita harus memasukkan kuncinya:
+**2. Menghubungkan ke Supabase**    
+- Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
+- Di sana Anda akan melihat Publishable key dan copy(ini akan digunakan sebagai anon key).
+= Lalu buka Data API. Copy url yang ada di API URL
 
-Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
-Di sana Anda akan melihat Publishable key dan copy(ini akan digunakan sebagai anon key).
-Lalu buka Data API. Copy url yang ada di API URL
-
-Buka file main.dart di laptop Anda, lalu copy-paste kedua kode tersebut ke bagian ini:  
+- Buka file main.dart di laptop Anda, lalu copy-paste kedua kode tersebut ke bagian ini:
+  
 Dart  
   await Supabase.initialize(  
     url: 'COPY_URL_PROJECT_ANDA_DI_SINI',   
@@ -145,6 +144,25 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 - Klik Email untuk Enable Email provider.
 
 - lalu saya mematikan toggle Confirm email agar tidak perlu repot memverifikasi email asli setiap kali membuat akun dummy di halaman Register.  
+<img width="960" height="470" alt="Image" src="https://github.com/user-attachments/assets/5c446bc2-e302-4268-a3f9-b845f4d2f8bd" />
+
+**4. Membuat Database (Tabel katalog)**  
+- Di menu kiri Supabase, saya masuk ke Table Editor, lalu saya klik Create a new table.
+
+- Saya mematikan centang Enable Row Level Security (RLS) untuk sementara waktu agar bisa melakukan CRUD (Create, Read, Update, Delete) dari aplikasi tanpa halangan 
+
+- Lalu saya menambahkan tabel beserta kolomnya yaitu:
+
+- id (Tipe: uuid, Default Value: gen_random_uuid(), centang Primary) - Biasanya sudah ada otomatis.
+- created_at (Tipe: timestamptz, Default Value: now()) - Biasanya sudah ada otomatis.
+- nama (Tipe: text)
+- harga (Tipe: int8 atau numeric)
+- tahun (Tipe: int4 atau numeric)
+- gambar (Tipe: text)
+- spesifikasi (Tipe: text)  
+<img width="386" height="278" alt="Image" src="https://github.com/user-attachments/assets/e1253e4e-cd04-4b1f-9959-2fcbce74b99f" />
+
+<img width="958" height="349" alt="Image" src="https://github.com/user-attachments/assets/f28f74c7-c7f8-4059-85d9-c83977341826" />  
 
 ## Cara Penggunaan Singkat    
 
@@ -209,9 +227,6 @@ samsung/
 │   │   └── register_page.dart    
 │   │  
 │   └── main.dart                  
-
-
- 
 
 ## Screenshot Aplikasi
 

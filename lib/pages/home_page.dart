@@ -24,9 +24,11 @@ class _HomePageState extends State<HomePage> {
         .stream(primaryKey: ['id'])
         .order('created_at', ascending: false);
   }
+
   String formatRupiah(String hargaAsli) {
     String angkaSaja = hargaAsli.replaceAll(RegExp(r'[^0-9]'), '');
     if (angkaSaja.isEmpty) return '0';
+
     String hasil = '';
     for (int i = angkaSaja.length - 1; i >= 0; i--) {
       if ((angkaSaja.length - 1 - i) % 3 == 0 && i != angkaSaja.length - 1) {
@@ -36,6 +38,7 @@ class _HomePageState extends State<HomePage> {
     }
     return hasil;
   }
+
   void deleteData(String id) async {
     try {
       await supabase.from('katalog').delete().eq('id', id);
@@ -52,6 +55,7 @@ class _HomePageState extends State<HomePage> {
       }
     }
   }
+
   void showDetailDialog(BuildContext context, Katalog item) {
     showDialog(
       context: context,
@@ -132,9 +136,11 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
+
           if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
           }
+
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(
               child: Column(
@@ -147,12 +153,13 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }
+
           final data = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 320, 
+                maxCrossAxisExtent: 320,
                 mainAxisExtent: 480,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
@@ -160,126 +167,207 @@ class _HomePageState extends State<HomePage> {
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final item = Katalog.fromJson(data[index]);
-                return Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: cardColor,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Stack(
+                String selectedStorage = '256 GB';
+
+                return StatefulBuilder(
+                  builder: (context, setState) {
+                    
+                    int currentPrice = int.tryParse(item.harga.toString()) ?? 0;
+                    
+                    if (selectedStorage == '512 GB') {
+                      currentPrice += 2500000;
+                    } else if (selectedStorage == '1 TB') {
+                      currentPrice += 5000000;
+                    }
+
+                    return Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: cardColor,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
-                            child: SizedBox(
-                              height: 180,
-                              child: Image.network(
-                                item.gambar,
-                                fit: BoxFit.contain,
-                                errorBuilder: (context, error, stackTrace) =>
-                                    const Icon(Icons.broken_image, size: 80, color: Colors.grey),
+                          Stack(
+                            children: [
+                              Center(
+                                child: SizedBox(
+                                  height: 180,
+                                  child: Image.network(
+                                    item.gambar,
+                                    fit: BoxFit.contain,
+                                    errorBuilder: (context, error, stackTrace) =>
+                                        const Icon(Icons.broken_image, size: 80, color: Colors.grey),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            right: 0,
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  padding: EdgeInsets.zero,
-                                  constraints: const BoxConstraints(),
-                                  icon: const Icon(Icons.edit_outlined, color: Colors.grey, size: 20),
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_) => FormPage(katalog: item)));
-                                  },
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: const Icon(Icons.edit_outlined, color: Colors.grey, size: 20),
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) => FormPage(katalog: item)));
+                                      },
+                                    ),
+                                    const SizedBox(width: 8),
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
+                                      onPressed: () => deleteData(item.id!),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(width: 8),
-                                IconButton(
-                                  padding: EdgeInsets.zero,
-                                  constraints: const BoxConstraints(),
-                                  icon: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
-                                  onPressed: () => deleteData(item.id!),
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            item.nama,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: textColor),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const SizedBox(width: 4),
+                              Text("5", style: TextStyle(fontSize: 12, color: textColor)),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              CircleAvatar(radius: 8, backgroundColor: Colors.grey.shade300),
+                              const SizedBox(width: 6),
+                              const CircleAvatar(radius: 8, backgroundColor: Colors.black87),
+                              const SizedBox(width: 6),
+                              const CircleAvatar(radius: 8, backgroundColor: Colors.blueGrey),
+                            ],
+                          ),
+                          const SizedBox(height: 20),                          
+                          Row(
+                            children: [
+                              GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () {
+                                  setState(() {
+                                    selectedStorage = '256 GB';
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: selectedStorage == '256 GB' ? textColor.withOpacity(0.1) : Colors.transparent,
+                                    border: Border.all(
+                                      color: selectedStorage == '256 GB' ? textColor : Colors.grey.shade400,
+                                    ),
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Text(
+                                    "256 GB",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: selectedStorage == '256 GB' ? FontWeight.bold : FontWeight.normal,
+                                      color: selectedStorage == '256 GB' ? textColor : Colors.grey.shade600,
+                                    ),
+                                  ),
                                 ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        item.nama,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: textColor),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const SizedBox(width: 4),
-                          Text("5", style: TextStyle(fontSize: 12, color: textColor)),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          CircleAvatar(radius: 8, backgroundColor: Colors.grey.shade300),
-                          const SizedBox(width: 6),
-                          const CircleAvatar(radius: 8, backgroundColor: Colors.black87),
-                          const SizedBox(width: 6),
-                          const CircleAvatar(radius: 8, backgroundColor: Colors.blueGrey),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade400),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Text("512 GB", style: TextStyle(fontSize: 10, color: textColor)),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () {
+                                  setState(() {
+                                    selectedStorage = '512 GB';
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: selectedStorage == '512 GB' ? textColor.withOpacity(0.1) : Colors.transparent,
+                                    border: Border.all(
+                                      color: selectedStorage == '512 GB' ? textColor : Colors.grey.shade400,
+                                    ),
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Text(
+                                    "512 GB",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: selectedStorage == '512 GB' ? FontWeight.bold : FontWeight.normal,
+                                      color: selectedStorage == '512 GB' ? textColor : Colors.grey.shade600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+
+                              GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () {
+                                  setState(() {
+                                    selectedStorage = '1 TB';
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: selectedStorage == '1 TB' ? textColor.withOpacity(0.1) : Colors.transparent,
+                                    border: Border.all(
+                                      color: selectedStorage == '1 TB' ? textColor : Colors.grey.shade400,
+                                    ),
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Text(
+                                    "1 TB",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: selectedStorage == '1 TB' ? FontWeight.bold : FontWeight.normal,
+                                      color: selectedStorage == '1 TB' ? textColor : Colors.grey.shade600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.transparent),
+                          
+                          const Spacer(),
+                          Text(
+                            "Rp${formatRupiah(currentPrice.toString())}",
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: textColor),
+                          ),
+                          const SizedBox(height: 16),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 40,
+                            child: OutlinedButton(
+                              onPressed: () => showDetailDialog(context, item),
+                              style: OutlinedButton.styleFrom(
+                                side: BorderSide(color: isDarkMode ? Colors.white : Colors.black, width: 1.5),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                foregroundColor: textColor,
+                              ),
+                              child: const Text("Lebih detail", style: TextStyle(fontWeight: FontWeight.bold)),
                             ),
-                            child: Text("256 GB", style: TextStyle(fontSize: 10, color: Colors.grey.shade600)),
                           ),
                         ],
-                      ),                    
-                      const Spacer(),
-                      Text(
-                        "Rp${formatRupiah(item.harga.toString())}",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: textColor),
-                      ),                      
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 40,
-                        child: OutlinedButton(
-                          onPressed: () => showDetailDialog(context, item),
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: isDarkMode ? Colors.white : Colors.black, width: 1.5),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20), 
-                            ),
-                            foregroundColor: textColor,
-                          ),
-                          child: const Text("Lebih detail", style: TextStyle(fontWeight: FontWeight.bold)),
-                        ),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 );
               },
             ),

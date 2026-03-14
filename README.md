@@ -3,8 +3,8 @@ Nama: Prakasa Wira Mukti
 NIM: 2409116054  
 Kelas: B 2024  
 
-## Deskripsi Project
-
+## Deskripsi Project  
+Aplikasi Katalog Smartphone Samsung adalah sebuah platform digital berbasis mobile yang dirancang untuk mengelola dan mendokumentasikan informasi lini smartphone Samsung secara sistematis. Dibangun dengan antarmuka pengguna (UI) bergaya monokrom yang adaptif terhadap Dark/Light Mode, aplikasi ini memiliki navigasi layaknya etalase digital. Pengguna yang terautentikasi dapat dengan mudah melakukan manajemen data secara real-time mulai dari menambahkan informasi handphone samsung, melihat spesifikasi detail dan harga, memperbarui informasi, hingga menghapus data katalog yang sudah tidak relevan.
 
 ## Fitur Aplikasi
 **1. Fitur Autentikasi (Keamanan Pengguna)**    
@@ -183,8 +183,22 @@ Dart
 **6. Keluar dari Aplikasi (Logout)**  
 Jika Anda sudah selesai bertugas atau ingin berganti akun admin lain, klik ikon Pintu Keluar/Logout yang terletak di pojok kanan atas layar sebelah tombol Tema. Anda akan dikembalikan ke halaman Login.
 
-## Struktur Folder
- 
+## Struktur Folder  
+samsung/  
+│  
+├── lib/  
+│   ├── models/  
+│   │   └── katalog.dart           
+│   │  
+│   ├── pages/                      
+│   │   ├── form_page.dart         
+│   │   ├── home_page.dart         
+│   │   ├── login_page.dart        
+│   │   └── register_page.dart    
+│   │  
+│   └── main.dart                  
+
+
  
 
 ## Screenshot Aplikasi

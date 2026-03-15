@@ -38,20 +38,20 @@ samsung/
 
 - Tampil Data (Read): Menampilkan daftar smartphone yang akan ter-update secara instan (live) di layar jika ada perubahan data, karena ada teknologi Stream dari Supabase.
 
-- Edit Data (Update): Mengubah data produk yang sudah ada. Saat tombol edit ditekan, form akan otomatis terisi dengan data lama agar mudah diperbaiki.
+- Edit Data (Update): Mengubah data produk yang sudah ada. Saat tombol edit ditekan, form akan otomatis terisi dengan data lama agar mudah diganti.
 
-- Hapus Data (Delete): Menghapus produk dari database langsung melalui ikon tempat sampah di masing-masing kartu produk.
+- Hapus Data (Delete): Menghapus produk dari database langsung melalui ikon tempat sampah di masing masing card produk.
 
 **3. UI/UX**    
-- Desain Monokrom Adaptif: Aplikasi sekarang menggunakan skema warna hitam dan putih yang elegan. Warna latar belakang, tombol, dan teks akan beradaptasi secara otomatis (berkebalikan) saat pengguna mengganti mode Terang ke Gelap.
+- Desain Monokrom Adaptif: Aplikasi sekarang menggunakan skema warna hitam dan putih. Warna latar belakang, tombol, dan teks akan berganti saat pengguna mengganti mode Terang ke Gelap.
 
-- Grid Layout Produk: Daftar HP tidak lagi membingungkan, melainkan tersusun rapi menjadi dua kolom sejajar dengan ukuran tinggi yang sama rata (fixed height) menggunakan sistem Grid.
+- Grid Layout Produk: Daftar HP tersusun rapi menjadi sejajar dengan ukuran tinggi yang sama rata (fixed height) menggunakan sistem Grid.
 
 - Dilengkapi dengan ornamen visual seperti Bintang Rating dan Indikator Varian Warna yang ada. Terdapat juga Tombol Varian Memori (256 GB, 512 GB, 1 TB) yang interaktif. Saat pengguna memilih kapasitas memori yang lebih besar, harga produk yang tertera di bagian bawah kartu akan otomatis berubah.
 
 - Pop-up Detail Spesifikasi (Dialog): Fitur interaktif baru di mana pengguna bisa menekan tombol melengkung "Lebih detail" untuk memunculkan kotak pop-up yang berisi informasi tahun rilis dan spesifikasi lengkap dari database.
 
-- Tombol edit dan hapus: Tombol edit dan hapus sekarang dirubah dari segi warna menjadi abu-abu di pojok kanan atas gambar HP agar tidak terlihat mengganggu estetika cardnya.
+- Tombol edit dan hapus: Tombol edit dan hapus sekarang dirubah dari segi warna menjadi abu abu di pojok kanan atas gambar HP agar tidak terlihat mengganggu estetika cardnya.
 
 **4. Validasi & Format Data**    
 - Currency Formatter: Saat user mengetik angka di kolom Harga, sistem akan otomatis menambahkan titik setiap 3 angka (misal: mengetik 15000 otomatis menjadi 15.000).

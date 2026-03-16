@@ -234,15 +234,13 @@ git clone https://github.com/Franzwurstt/minpro2pab.git
 cd minpro2pab  
 
 
-- Install dependencies:
+- Install dependencies:  
 flutter pub get
 
 
-- Jalankan aplikasi:
+- Jalankan aplikasi:  
 flutter run
 
-- Untuk mengakses Google Fonts    
-flutter pub add google_fonts  
 
 ## Screenshot Aplikasi
 **1. Light Mode**

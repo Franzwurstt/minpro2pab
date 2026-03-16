@@ -273,7 +273,7 @@ flutter pub add google_fonts
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/a1cb7b54-ef7c-4c4f-9607-fe2a7faaf71e" />
 
 - tampilan setelah delete 
-<img width="959" height="508" alt="Image" src="https://github.com/user-attachments/assets/18ea202a-25d0-4714-b637-e717de39b655" />
+<img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/cb853c9b-aab8-4175-9578-2d61511e1162" />
 
 **2. Dark Mode**
 - mode gelap (untuk mengaktifkan darkmode klik logo bulan)

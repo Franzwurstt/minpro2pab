@@ -256,7 +256,7 @@ flutter run
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/e25be059-bdbb-4abb-9a3f-fd866b9f2ff1" />
 
 - tampilan detail spesifikasi
-<img width="960" height="508" alt="Image" src="https://github.com/user-attachments/assets/7d4effb5-ae2f-4c2f-8b1a-9bb82d848a38" />/>
+<img width="960" height="508" alt="Image" src="https://github.com/user-attachments/assets/7d4effb5-ae2f-4c2f-8b1a-9bb82d848a38" />
 
 - tampilan edit page
 <img width="960" height="509" alt="Image" src="https://github.com/user-attachments/assets/a1cb7b54-ef7c-4c4f-9607-fe2a7faaf71e" />

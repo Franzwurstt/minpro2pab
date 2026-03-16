@@ -71,71 +71,71 @@ samsung/
 **1. Widget Struktur & Tata Letak (Layout)**  
 Widget ini berfungsi sebagai kerangka untuk mengatur letak posisi elemen di layar.
 
-- Scaffold : Kanvas utama untuk setiap halaman. Menyediakan ruang untuk AppBar, body, dan FloatingActionButton.
+- `Scaffold` : Kanvas utama untuk setiap halaman. Menyediakan ruang untuk AppBar, body, dan FloatingActionButton.
 
-- AppBar : Bar navigasi di bagian atas layar (menampilkan judul, tombol tema, dan logout).
+- `AppBar` : Bar navigasi di bagian atas layar (menampilkan judul, tombol tema, dan logout).
 
-- Container : Digunakan untuk membuat badge memori (512GB/256GB) dan membungkus kartu HP.
+- `Container` : Digunakan untuk membuat badge memori (512GB/256GB) dan membungkus kartu HP.
 
-- Column : Menyusun elemen secara vertikal (dari atas ke bawah). Contoh: Menyusun TextField di halaman Form/Login.
+- `Column` : Menyusun elemen secara vertikal (dari atas ke bawah). Contoh: Menyusun TextField di halaman Form/Login.
 
-- Row : Menyusun elemen secara horizontal (menyamping). Contoh: Menyusun bintang rating, titik warna, dan tombol Edit/Hapus.
+- `Row` : Menyusun elemen secara horizontal (menyamping). Contoh: Menyusun bintang rating, titik warna, dan tombol Edit/Hapus.
 
-- Stack : Menumpuk beberapa widget. Digunakan di kartu produk agar tombol Edit/Hapus bisa melayang di atas gambar HP.
+- `Stack` : Menumpuk beberapa widget. Digunakan di kartu produk agar tombol Edit/Hapus bisa melayang di atas gambar HP.
 
-- Positioned : Digunakan untuk mengatur posisi spesifik (misal: ditaruh tepat di pojok kanan atas).
+- `Positioned` : Digunakan untuk mengatur posisi spesifik (misal: ditaruh tepat di pojok kanan atas).
 
-- Padding : Memberikan jarak di bagian dalam konten agar tidak menempel ke pinggir layar.
+- `Padding` : Memberikan jarak di bagian dalam konten agar tidak menempel ke pinggir layar.
 
-- SizedBox : Memberikan jarak kosong antar elemen (sebagai spasi), atau untuk "memaksa" ukuran gambar/kotak agar spesifik.
+- `SizedBox` : Memberikan jarak kosong antar elemen (sebagai spasi), atau untuk "memaksa" ukuran gambar/kotak agar spesifik.
 
-- Spacer : Widget elastis yang mendorong elemen lain. Digunakan di dalam kartu produk agar Harga dan Tombol "Lebih detail" selalu terdorong ke bagian paling bawah, tidak peduli seberapa panjang nama HP-nya.
+- `Spacer` : Widget elastis yang mendorong elemen lain. Digunakan di dalam kartu produk agar Harga dan Tombol "Lebih detail" selalu terdorong ke bagian paling bawah, tidak peduli seberapa panjang nama HP-nya.
 
-- SingleChildScrollView : Membuat area layar bisa di-scroll ke bawah.
+- `SingleChildScrollView` : Membuat area layar bisa di-scroll ke bawah.
 
-- GridView.builder : Widge pembuat grid. Mengatur daftar HP agar terlihat rapi menjadi kolom dengan tinggi yang seragam.
+- `GridView.builder` : Widge pembuat grid. Mengatur daftar HP agar terlihat rapi menjadi kolom dengan tinggi yang seragam.
 
 **2. Widget Visual & Tampilan (UI Components)**  
 Widget ini adalah elemen yang langsung dilihat oleh mata pengguna.
 
-- Text : Untuk menampilkan semua tulisan (Judul, Harga, Spesifikasi, dll).
+- `Text` : Untuk menampilkan semua tulisan (Judul, Harga, Spesifikasi, dll).
 
-- Icon : Untuk menampilkan grafis ikon bawaan (gembok, email, bintang rating, sun/moon, dll).
+- `Icon` : Untuk menampilkan grafis ikon bawaan (gembok, email, bintang rating, sun/moon, dll).
 
-- Image.network : Mengambil dan menampilkan gambar HP langsung dari URL internet/Supabase.
+- `Image.network` : Mengambil dan menampilkan gambar HP langsung dari URL internet/Supabase.
 
-- CircleAvatar : Membuat bentuk lingkaran sempurna. Digunakan untuk membuat bulatan-bulatan kecil varian warna HP (Hitam, Abu, Biru).
+- `CircleAvatar` : Membuat bentuk lingkaran sempurna. Digunakan untuk membuat bulatan-bulatan kecil varian warna HP (Hitam, Abu, Biru).
 
 **3. Widget Tombol & Input (Inputs & Actions)**  
 Widget ini berfungsi untuk interaksi user (diketik atau diklik).
 
-- TextField : Kolom tempat pengguna mengetik teks (Email, Password, Nama HP, Harga, dsb).
+- `TextField` : Kolom tempat pengguna mengetik teks (Email, Password, Nama HP, Harga, dsb).
 
-- ElevatedButton : Tombol utama (Tombol Login, Buat Akun, Simpan). 
+- `ElevatedButton` : Tombol utama (Tombol Login, Buat Akun, Simpan). 
 
-- OutlinedButton : Tombol sekunder dengan garis tepi (Tombol "Lebih detail" di Beranda dan "Belum punya akun" di Login).
+- `OutlinedButton `: Tombol sekunder dengan garis tepi (Tombol "Lebih detail" di Beranda dan "Belum punya akun" di Login).
 
-- IconButton : Tombol yang murni berupa ikon tanpa kotak/teks (Tombol Tema, Logout, Edit, dan Hapus).
+- `IconButton` : Tombol yang murni berupa ikon tanpa kotak/teks (Tombol Tema, Logout, Edit, dan Hapus).
 
-- TextButton : Tombol berupa teks sederhana tanpa batas (border). Digunakan untuk tombol "Tutup" pada pop-up spesifikasi.
+- `TextButton` : Tombol berupa teks sederhana tanpa batas (border). Digunakan untuk tombol "Tutup" pada pop-up spesifikasi.
 
-- FloatingActionButton : Tombol utama berbentuk bulat yang selalu melayang di sudut kanan bawah Beranda (Tombol Tambah +).
+- `FloatingActionButton` : Tombol utama berbentuk bulat yang selalu melayang di sudut kanan bawah Beranda (Tombol Tambah +).
 
 **4. Widget Dialog & Notifikasi**  
-- AlertDialog : Muncul lewat fungsi showDialog(). Ini adalah kotak pop-up melayang di tengah layar yang muncul saat Anda mengklik tombol "Lebih detail" untuk membaca spesifikasi.  
+- `AlertDialog` : Muncul lewat fungsi showDialog(). Ini adalah kotak pop-up melayang di tengah layar yang muncul saat Anda mengklik tombol "Lebih detail" untuk membaca spesifikasi.  
     
 **5. Widget Logika & State Management**  
 Widget ini mengurus aliran data dan perubahan status layar.
 
-- MaterialApp :root widget di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
+- `MaterialApp` :root widget di file main.dart yang membungkus seluruh aplikasi dan mengatur tema global (font, dark mode).
 
-- StreamBuilder : Widgetyang mendengarkan database Supabase. Kalau ada data ditambah/dihapus, makan akan otomatis me-refresh daftar HP tanpa perlu refresh secara manual.
+- `StreamBuilder` : Widgetyang mendengarkan database Supabase. Kalau ada data ditambah/dihapus, makan akan otomatis me-refresh daftar HP tanpa perlu refresh secara manual.
 
-- ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu refresh halaman.
+- `ValueListenableBuilder` : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu refresh halaman.
   
-- StatefulBuilder & GestureDetector: Diaplikasikan di dalam kartu produk untuk menangkap sentuhan interaktif (HitTestBehavior.opaque) pada kotak varian memori (256GB/512GB/1TB). Widget ini memungkinkan setiap kartu memperbarui status yang dipilih dan menghitung ulang harga secara real-time.
+- `StatefulBuilder & GestureDetector`: Diaplikasikan di dalam kartu produk untuk menangkap sentuhan interaktif (HitTestBehavior.opaque) pada kotak varian memori (256GB/512GB/1TB). Widget ini memungkinkan setiap kartu memperbarui status yang dipilih dan menghitung ulang harga secara real-time.
 
-- CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang loading (loading login, register, atau menyimpan data ke server). 
+- `CircularProgressIndicator` : Animasi lingkaran mutar yang muncul saat aplikasi sedang loading (loading login, register, atau menyimpan data ke server). 
 
 ## Setup Supabase  
 

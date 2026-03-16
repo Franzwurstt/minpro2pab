@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; 
 import 'pages/login_page.dart';
 
 final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
@@ -8,9 +9,10 @@ final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-    url: 'url',
-    anonKey: 'anon',
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
 
   runApp(const MyApp());
@@ -36,11 +38,9 @@ class MyApp extends StatelessWidget {
               foregroundColor: Colors.white,
             ),
           ),
-
           darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
             textTheme: GoogleFonts.outfitTextTheme(ThemeData.dark().textTheme),
           ),
-          
           home: const LoginPage(),
         );
       },

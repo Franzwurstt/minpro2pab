@@ -163,9 +163,9 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 
 - id - Biasanya sudah ada otomatis.
 - created_at - Biasanya sudah ada otomatis.
-- nama 
-- harga 
-- tahun 
+- nama
+- harga
+- tahun
 - gambar
 - spesifikasi  
 <img width="229" height="245" alt="Image" src="https://github.com/user-attachments/assets/da7cbf5b-3469-4e85-a90d-7588c1fc7de8" />

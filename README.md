@@ -144,30 +144,21 @@ Widget ini mengurus aliran data dan perubahan status layar.
 - Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
 - Di sana akan terlihat Publishable key dan copy(ini akan digunakan sebagai anon key).
 - Lalu buka Data API. Copy url yang ada di API URL
+- Buat file .env di root project dan paste url dan anon key nya(lihat contoh di .env):  
+SUPABASE_URL=YOUR_SUPABASE_URL  
+SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY  
 
-- Buka file main.dart, lalu copy-paste kedua kode tersebut ke bagian ini:
-  
-Dart  
-  await Supabase.initialize(  
-    url: 'COPY_URL_PROJECT_ANDA_DI_SINI',   
-    anonKey: 'COPY_ANON_KEY_ANDA_DI_SINI',  
-  );  
-
-**3. Mengaktifkan Fitur Autentikasi (Login & Register)**
+**3. Mengaktifkan Fitur Autentikasi (Login & Register)**  
 Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email Auth dengan cara:  
 
 - Ke menu kiri Supabase, masuk ke menu Authentication > Providers.
-
 - Klik Email untuk Enable Email provider.
-
 - lalu saya mematikan toggle Confirm email agar tidak perlu repot memverifikasi email asli setiap kali membuat akun dummy di halaman Register.  
 <img width="960" height="470" alt="Image" src="https://github.com/user-attachments/assets/5c446bc2-e302-4268-a3f9-b845f4d2f8bd" />
 
-**4. Membuat Database (Tabel katalog)**  
-- Di menu kiri Supabase, saya masuk ke Table Editor, lalu saya klik Create a new table.
-
+**4. Membuat Database (Tabel katalog)**   
+- Di menu kiri Supabase, saya masuk ke Table Editor, lalu saya klik Create a new table.  
 - Saya mematikan centang Enable Row Level Security (RLS) untuk sementara waktu agar bisa melakukan CRUD (Create, Read, Update, Delete) dari aplikasi tanpa halangan 
-
 - Lalu saya menambahkan tabel beserta kolomnya yaitu:
 
 - id - Biasanya sudah ada otomatis.
@@ -176,7 +167,7 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 - harga 
 - tahun 
 - gambar
-- spesifikasi 
+- spesifikasi  
 <img width="229" height="245" alt="Image" src="https://github.com/user-attachments/assets/da7cbf5b-3469-4e85-a90d-7588c1fc7de8" />
 
 ## Cara Penggunaan Singkat    

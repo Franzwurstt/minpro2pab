@@ -7,6 +7,7 @@ Kelas: B 2024
 Aplikasi Katalog Smartphone Samsung adalah sebuah platform digital berbasis mobile yang dirancang untuk mengelola dan mendokumentasikan informasi lini smartphone Samsung secara sistematis. Dibangun dengan antarmuka pengguna (UI) bergaya monokrom yang adaptif terhadap Dark/Light Mode, aplikasi ini memiliki navigasi layaknya etalase digital. Pengguna yang terautentikasi dapat dengan mudah melakukan manajemen data secara real-time mulai dari menambahkan informasi handphone samsung, melihat spesifikasi detail dan harga, memperbarui informasi, hingga menghapus data katalog yang sudah tidak relevan.
 
 ## Struktur Folder  
+```text
 samsung/  
 │  
 ├── lib/  
@@ -19,7 +20,9 @@ samsung/
 │   │   ├── login_page.dart        
 │   │   └── register_page.dart    
 │   │  
-│   └── main.dart  
+│   └── main.dart
+```
+
 
 ## Fitur Aplikasi
 **1. Fitur Autentikasi (Keamanan Pengguna)**    
@@ -131,7 +134,7 @@ Widget ini mengurus aliran data dan perubahan status layar.
 - ValueListenableBuilder : Mendengarkan klik pada tombol Dark/Light Mode dan secara instan mengubah warna seluruh aplikasi tanpa perlu refresh halaman.
   
 - StatefulBuilder & GestureDetector: Diaplikasikan di dalam kartu produk untuk menangkap sentuhan interaktif (HitTestBehavior.opaque) pada kotak varian memori (256GB/512GB/1TB). Widget ini memungkinkan setiap kartu memperbarui status yang dipilih dan menghitung ulang harga secara real-time.
-  
+
 - CircularProgressIndicator : Animasi lingkaran mutar yang muncul saat aplikasi sedang loading (loading login, register, atau menyimpan data ke server). 
 
 ## Setup Supabase  
@@ -144,9 +147,11 @@ Widget ini mengurus aliran data dan perubahan status layar.
 - Di menu sebelah kiri, klik Project Settings (ikon gir paling bawah). Pilih menu API Keys.
 - Di sana akan terlihat Publishable key dan copy(ini akan digunakan sebagai anon key).
 - Lalu buka Data API. Copy url yang ada di API URL
-- Buat file .env di root project dan paste url dan anon key nya(lihat contoh di .env):  
+- Buat file .env di root project dan paste url dan anon key nya(lihat contoh di .env):
+``` 
 SUPABASE_URL=YOUR_SUPABASE_URL  
-SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY  
+SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
+```
 
 **3. Mengaktifkan Fitur Autentikasi (Login & Register)**  
 Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email Auth dengan cara:  
@@ -220,17 +225,21 @@ Karena aplikasi memiliki LoginPage dan RegisterPage, saya menyalakan fitur Email
 Jika Anda sudah selesai bertugas atau ingin berganti akun admin lain, klik ikon Pintu Keluar/Logout yang terletak di pojok kanan atas layar sebelah tombol Tema. Anda akan dikembalikan ke halaman Login.
 
 ## Cara Menjalankan Project  
-- Clone repository:  
+- Clone repository:
+```
 git clone https://github.com/Franzwurstt/minpro2pab.git  
 cd minpro2pab  
+```
 
-
-- Install dependencies:  
+- Install dependencies:
+```
 flutter pub get
+```
 
-
-- Jalankan aplikasi:  
+- Jalankan aplikasi:
+```
 flutter run
+```
 
 
 ## Screenshot Aplikasi
